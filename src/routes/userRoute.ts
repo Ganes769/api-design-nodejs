@@ -5,7 +5,7 @@ router.use(authencitatedToken)
 router.get('/', (req, res) => {
   res.json({ mesaage: 'get all user' })
 })
-router.get('/:xid', (req, res) => {
+router.get('/:id', (req, res) => {
   res.json({ mesaage: 'get one  user' })
 })
 router.put('/:id', (req, res) => {

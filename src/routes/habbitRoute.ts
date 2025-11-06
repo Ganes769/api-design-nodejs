@@ -5,6 +5,9 @@ import { authencitatedToken } from '../middleware/auth.ts'
 import {
   createHabbit,
   getUserHabbits,
+  getHabbitById,
+  updateHabbit,
+  deleteHabbit,
 } from '../controllers/habbitControllers.ts'
 const createHabbitSchema = z.object({
   name: z.string().min(1),
@@ -16,14 +19,9 @@ const createHabbitSchema = z.object({
 const router = Router()
 router.use(authencitatedToken)
 router.get('/', getUserHabbits)
-router.get('/:id', (req, res) => {
-  res.json({ message: 'habbit' })
-})
+router.get('/:id', getHabbitById)
+router.patch('/:id', updateHabbit)
 router.post('/', validateBody(createHabbitSchema), createHabbit)
-router.delete('/:id', (req, res) => {
-  res.json({ message: 'delete 1 create' })
-})
-router.post('/:id/complete', (req, res) => {
-  res.json({ message: 'habbit complete' })
-})
+router.delete('/:id', deleteHabbit)
+
 export default router

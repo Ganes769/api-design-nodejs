@@ -14,9 +14,7 @@ app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(morgan('dev', { skip: () => isTest() }))
-app.get('/health', (req, res) => {
-  res.json({ message: 'health kit' })
-})
+
 app.use('/api/auth', authRoutes)
 app.use('/api/user', userRoutes)
 app.use('/api/habbit', habbitRoutes)
