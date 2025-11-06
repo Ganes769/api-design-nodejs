@@ -54,7 +54,7 @@ export const tags = pgTable('tages', {
 export const habbitTags = pgTable('habbitTags', {
   id: uuid('id').primaryKey().defaultRandom(),
   habbitId: uuid('habbit_id')
-    .references(() => habbitTags.id, {
+    .references(() => habbits.id, {
       onDelete: 'cascade',
     })
     .notNull(),
