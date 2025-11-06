@@ -1,10 +1,12 @@
 import { Router } from 'express'
 import { z } from 'zod'
 import { validateBody } from '../middleware/validation.ts'
+import { authencitatedToken } from '../middleware/auth.ts'
 const createHabbitSchema = z.object({
   name: z.string(),
 })
 const router = Router()
+router.use(authencitatedToken)
 router.get('/', (req, res) => {
   res.json({ message: 'habbit' })
 })
